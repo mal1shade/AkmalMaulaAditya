@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mal1shade.github.io/AkmalMaulaAditya/sitemap.xml
