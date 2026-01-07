@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Portofolio Akmal Maula Aditya - Tech Engineer yang berfokus dalam mengimplementasikan autonous dalam proses bisnis." />
-    <meta name="keywords" content="Akmal Maula Aditya, Portofolio, GitHub, autonous">
     <title>Akmal's Portfolio</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
@@ -154,6 +153,22 @@
             .info-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2.5rem; }
         }
+        .about-panel {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background: #0b0b0b;
+        color: white;
+        padding: 110px 40px 40px;
+        transition: right 0.4s ease;
+        z-index: 999;
+        }
+
+    .about-panel.active {
+    right: 0;
+    }
     </style>
 </head>
 <body>
@@ -165,8 +180,16 @@
             <a href="#about">About</a>
             <a href="#social">Social</a>
             <a href="#contact">Contact</a>
+            <button id="aboutBtn">=</button>
         </nav>
     </header>
+
+<section id="about" class="about-panel">
+    <h2>About Akmal Maula Aditya</h2>
+    <p>
+    Akmal Maula Aditya, also known online as mal1shade, is an Indonesian technology enthusiast and aspiring engineer who actively builds personal projects, explores software development and digital systems, and documents his learning journey through a public portfolio to contribute practical solutions and continuous self-growth in the tech field.
+    </p>
+</section>
 
     <main>
         <section class="hero" id="about">
@@ -226,13 +249,13 @@
         <section class="social-links" id="social">
             <div class="social-card" data-url="https://www.instagram.com/mal1shade">
                 <div style="font-size: 3rem;">📸</div>
-                <h3>Instagram</h3>
+                <h3>Instagram @mal1shade</h3>
                 <p>Ikuti keseharian saya.</p>
             </div>
             <div class="social-card" data-url="https://github.com/mal1shade">
                 <div style="font-size: 3rem;">💻</div>
                 <h3>GitHub</h3>
-                <p>Lihat proyek kode saya.</p>
+                <p>Lihat proyek saya.</p>
             </div>
         </section>
 
@@ -277,5 +300,10 @@
 
         document.getElementById('sayHiBtn').onclick = () => alert('Terima kasih sudah berkunjung!');
     </script>
+    <script>
+    document.getElementById("aboutBtn").addEventListener("click", function () {
+    document.getElementById("about").classList.toggle("active");
+    });
+</script>
 </body>
 </html>
