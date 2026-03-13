@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Portofolio Akmal Maula Aditya - Tech Engineer yang berfokus mengimplementasikan autonomous dalam proses bisnis." />
+    <meta name="description"
+        content="Portofolio Akmal Maula Aditya - Tech Engineer yang berfokus mengimplementasikan autonomous dalam proses bisnis." />
     <title>Akmal's Portfolio</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
@@ -11,22 +13,31 @@
         * {
             box-sizing: border-box;
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
             background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
             color: white;
             overflow-x: hidden;
+            padding-bottom: 100px;
         }
 
         /* Latar Belakang Luar Angkasa */
         #space-container {
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: 0;
             pointer-events: none;
         }
+
         .star {
             position: absolute;
             background-color: white;
@@ -35,63 +46,117 @@
             animation: twinkle var(--duration) infinite ease-in-out;
             animation-delay: var(--delay);
         }
+
         @keyframes twinkle {
-            0%, 100% { opacity: 0.1; transform: scale(0.5); }
-            50% { opacity: 1; transform: scale(1); }
+
+            0%,
+            100% {
+                opacity: 0.1;
+                transform: scale(0.5);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
-        header {
+        /* Floating Bottom Nav */
+        .floating-nav {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 3rem;
-            background: rgba(0,0,0,0.2);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 6px;
+            border-radius: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             z-index: 1000;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            gap: 5px;
         }
 
-        .logo { font-weight: 600; font-size: 1.5rem; letter-spacing: 2px; }
-        nav { display: flex; gap: 2rem; align-items: center;}
-        nav a { color: #eee; text-decoration: none; font-weight: 600; transition: 0.3s; }
-        nav a:hover { color: #ffd166; }
-        
-        #aboutBtn {
-            background: none;
-            border: 2px solid #ffd166;
-            color: #ffd166;
-            font-size: 1.2rem;
+        .nav-btn {
+            background: transparent;
+            border: none;
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: 500;
+            color: #ccc;
+            border-radius: 30px;
             cursor: pointer;
-            border-radius: 5px;
-            padding: 2px 10px;
-            transition: 0.3s;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        #aboutBtn:hover {
+
+        .nav-btn:hover {
+            color: #ffd166;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-btn.active {
             background: #ffd166;
-            color: #222;
+            color: #0f0c29;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(255, 209, 102, 0.3);
         }
 
-        main { max-width: 900px; margin: 4rem auto 0; padding: 0 2rem; position: relative; z-index: 1; }
+        @media (max-width: 600px) {
+            .floating-nav {
+                bottom: 20px;
+                padding: 4px;
+                width: 90%;
+                justify-content: space-between;
+                border-radius: 30px;
+            }
 
-        .hero { text-align: center; margin-bottom: 3rem; }
-        .hero h1 { 
-            font-size: 3.5rem; 
+            .nav-btn {
+                padding: 10px 15px;
+                font-size: 14px;
+                flex: 1;
+            }
+        }
+
+        main {
+            max-width: 900px;
+            margin: 6rem auto 0;
+            /* Menambah gap tampilan atas */
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
             background: linear-gradient(to right, #a8c0ff, #3f2b96);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 0.5rem;
         }
-        
+
         /* Penambahan animasi ringan pada gambar profil */
         .profile-pic {
-            width: 150px; height: 150px;
+            width: 150px;
+            height: 150px;
             object-fit: cover;
             border-radius: 50%;
             border: 4px solid #ffd166;
-            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease;
         }
+
         .profile-pic:hover {
             transform: scale(1.05);
         }
@@ -102,7 +167,16 @@
             border-radius: 20px;
             margin-bottom: 4rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: 0.5s;
         }
+
+        .personal-info.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .info-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -110,43 +184,64 @@
             text-align: left;
             margin-top: 1.5rem;
         }
-        .info-item h4 { color: #ffd166; margin-bottom: 5px; }
-        .info-item p { margin: 0; color: #dcdcdc; font-size: 0.95rem; }
 
-        .social-links { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-top: 3rem; }
+        .info-item h4 {
+            color: #ffd166;
+            margin-bottom: 5px;
+        }
+
+        .info-item p {
+            margin: 0;
+            color: #dcdcdc;
+            font-size: 0.95rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 3rem;
+            /* Menambah gap antar card social */
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+            padding-bottom: 2rem;
+            transition: 0.5s;
+        }
+
         .social-card {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             padding: 2rem;
             flex: 1 1 250px;
             text-align: center;
-            transition: 0.3s;
+            transition: 0.5s;
             cursor: pointer;
             opacity: 0;
             transform: translateY(20px);
         }
-        
+
         .extra-section {
             display: flex;
             gap: 2rem;
             margin-bottom: 3rem;
             justify-content: center;
-            flex-wrap: wrap; 
+            flex-wrap: wrap;
+            transition: 0.5s;
         }
 
         .vertical-card {
             background: rgba(255, 255, 255, 0.08);
             border-radius: 20px;
             padding: 2rem;
-            flex: 1 1 350px; 
-            min-height: 385px; 
+            flex: 1 1 350px;
+            min-height: 385px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: 0.3s;
+            transition: 0.5s;
         }
 
         .vertical-card:hover {
             border-color: #ffd166;
             background: rgba(255, 255, 255, 0.12);
+            transition: 0.5s;
         }
 
         .vertical-card h3 {
@@ -155,18 +250,42 @@
             padding-bottom: 10px;
             margin-bottom: 20px;
             text-align: center;
+            transition: 0.5s;
         }
-        .social-card.visible { opacity: 1; transform: translateY(0); }
-        .social-card:hover { transform: translateY(-10px); background: rgba(255, 255, 255, 0.15); }
+
+        .social-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: 0.5s;
+        }
+
+        .social-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
 
         .btn-primary {
-            background: #ffd166; color: #222; border: none;
-            border-radius: 30px; padding: 1rem 3rem;
-            font-weight: 600; cursor: pointer; transition: 0.3s;
+            background: #ffd166;
+            color: #222;
+            border: none;
+            border-radius: 30px;
+            padding: 1rem 3rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
         }
-        .btn-primary:hover { transform: scale(1.05); background: #ffcb3b; }
 
-        footer { text-align: center; padding: 2rem; color: #bbb; font-size: 0.9rem; }
+        .btn-primary:hover {
+            transform: scale(1.05);
+            background: #ffcb3b;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #bbb;
+            font-size: 0.9rem;
+        }
 
         /* Panel About UX Update */
         .about-panel {
@@ -174,19 +293,22 @@
             top: 0;
             right: -100%;
             width: 100%;
-            max-width: 400px; /* Agar tidak terlalu lebar di Desktop */
+            max-width: 400px;
+            /* Agar tidak terlalu lebar di Desktop */
             height: 100vh;
             background: #0f0c29;
-            border-left: 2px solid rgba(255,255,255,0.1);
+            border-left: 2px solid rgba(255, 255, 255, 0.1);
             color: white;
             padding: 100px 40px 40px;
             transition: right 0.4s ease;
-            z-index: 1001
-        ;
-            box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+            z-index: 1001;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
         }
-        .about-panel.active { right: 0; }
-        
+
+        .about-panel.active {
+            right: 0;
+        }
+
         .close-btn {
             position: absolute;
             top: 20px;
@@ -199,30 +321,36 @@
         }
 
         @media (max-width: 600px) {
-            .info-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2.5rem; }
-            header { padding: 1.5rem; }
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
+
 <body>
     <div id="space-container"></div>
 
-    <header>
-        <div class="logo">3,14</div>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#social">Social</a>
-            <a href="#contact">Contact</a>
-            <button id="aboutBtn">=</button>
-        </nav>
-    </header>
+    <!-- Navigation: Floating Nav -->
+    <div class="floating-nav">
+        <a href="#home" class="nav-btn active">Home</a>
+        <a href="#social" class="nav-btn">Social</a>
+        <a href="#contact" class="nav-btn">Contact</a>
+        <button id="aboutBtn" class="nav-btn">About</button>
+    </div>
 
     <section id="about" class="about-panel">
         <button class="close-btn" id="closeAboutBtn">&times;</button>
         <h2 style="color: #ffd166;">About Akmal Maula Aditya</h2>
         <p style="line-height: 1.6; color: #eee;">
-            Halo! Saya Akmal, seseorang yang antusias dalam menjembatani teknologi dan efisiensi bisnis. Fokus utama saya adalah membangun sistem otonom yang dapat mengotomatisasi proses manual agar lebih cerdas dan produktif. Dari robotika hingga integrasi AI, saya percaya bahwa teknologi terbaik adalah teknologi yang memberikan solusi nyata bagi manusia.
+            Halo! Saya Akmal, seseorang yang antusias dalam menjembatani teknologi dan efisiensi bisnis. Fokus utama
+            saya adalah membangun sistem otonom yang dapat mengotomatisasi proses manual agar lebih cerdas dan
+            produktif. Dari robotika hingga integrasi AI, saya percaya bahwa teknologi terbaik adalah teknologi yang
+            memberikan solusi nyata bagi manusia.
         </p>
     </section>
 
@@ -234,7 +362,7 @@
             <button class="btn-primary" id="sayHiBtn">Say Hi!</button>
         </section>
 
-        <section class="personal-info">
+        <section class="personal-info" id="social">
             <h2 style="text-align: center; color: #ffd166;">Data Diri</h2>
             <div class="info-grid">
                 <div class="info-item">
@@ -255,24 +383,29 @@
                 </div>
             </div>
         </section>
-        
+
         <section class="extra-section">
             <div class="vertical-card">
                 <h3>🚀 Proyek Saya</h3>
                 <div style="display: flex; flex-direction: column; gap: 15px;">
                     <div style="background: rgba(0,0,0,0.2); padding: 15px; border-radius: 10px;">
                         <h4 style="margin: 0; color: #a8c0ff;">Sheet Auto Fill</h4>
-                        <p style="font-size: 0.85rem; margin: 5px 0;">Menggunakan sheet otomatis untuk membantu transaksi di sebuah toko.</p>
+                        <p style="font-size: 0.85rem; margin: 5px 0;">Menggunakan sheet otomatis untuk membantu
+                            transaksi di sebuah toko.</p>
                     </div>
                     <div style="background: rgba(0,0,0,0.2); padding: 15px; border-radius: 10px;">
                         <h4 style="margin: 0; color: #a8c0ff;">Chatbot with Integrations</h4>
-                        <p style="font-size: 0.85rem; margin: 5px 0;">Mampu membuat chatbot yang terhubung dengan tools automation. 
-                            <a href="https://script.google.com/macros/s/AKfycbwjk8C-jUTbB6HbDIoChj3kK9BGrDICR5nUGXOl8jVRheSyBpVYq8823dTmS2fXy19O/exec" target="_blank" style="color:#ffd166; margin-left:5px; text-decoration: none;">Lihat di sini.</a>
+                        <p style="font-size: 0.85rem; margin: 5px 0;">Mampu membuat chatbot yang terhubung dengan tools
+                            automation.
+                            <a href="https://script.google.com/macros/s/AKfycbwjk8C-jUTbB6HbDIoChj3kK9BGrDICR5nUGXOl8jVRheSyBpVYq8823dTmS2fXy19O/exec"
+                                target="_blank" style="color:#ffd166; margin-left:5px; text-decoration: none;">Lihat di
+                                sini.</a>
                         </p>
                     </div>
                     <div style="background: rgba(0,0,0,0.2); padding: 15px; border-radius: 10px;">
                         <h4 style="margin: 0; color: #a8c0ff;">Robot Autonomous</h4>
-                        <p style="font-size: 0.85rem; margin: 5px 0;">Sedang mengembangkan robot autonomous untuk memberikan makan otomatis di peternakan ayam petelur.</p>
+                        <p style="font-size: 0.85rem; margin: 5px 0;">Sedang mengembangkan robot autonomous untuk
+                            memberikan makan otomatis di peternakan ayam petelur.</p>
                     </div>
                 </div>
             </div>
@@ -280,13 +413,13 @@
             <div class="vertical-card">
                 <h3>🏆 Work Experience</h3>
                 <ul style="list-style: none; padding: 0; line-height: 1.8; margin-top: 15px;">
-                    <li><strong>2023 - 2025     :</strong> Kasir & Pelayanan Pelanggan</li>
+                    <li><strong>2023 - 2025 :</strong> Kasir & Pelayanan Pelanggan</li>
                     <li><strong>2025 - Sekarang :</strong> Staf Gudang Distributor & Dukungan Teknis IT</li>
                 </ul>
             </div>
         </section>
-        
-        <section class="social-links" id="social">
+
+        <section class="social-links" id="contact">
             <div class="social-card" data-url="https://www.instagram.com/mal1shade">
                 <div style="font-size: 3rem;">📸</div>
                 <h3>Instagram @mal1shade</h3>
@@ -297,10 +430,16 @@
                 <h3>GitHub</h3>
                 <p>Lihat proyek saya.</p>
             </div>
+            <div class="social-card" data-url="https://mal1shade.github.io/Gallery/">
+                <div style="font-size: 3rem;">🖼️</div>
+                <h3>Gallery</h3>
+                <p>Lihat koleksi foto & dokumentasi saya.</p>
+            </div>
         </section>
 
         <section id="contact" style="text-align:center; margin-top:5rem;">
-            <p>Hubungi saya di: <a href="mailto:akmal.maula@outlook.co.id" style="color:#ffd166; text-decoration:none;">akmal.maula@outlook.co.id</a></p>
+            <p>Hubungi saya di: <a href="mailto:akmal.maula@outlook.co.id"
+                    style="color:#ffd166; text-decoration:none;">akmal.maula@outlook.co.id</a></p>
         </section>
     </main>
 
@@ -309,6 +448,34 @@
     </footer>
 
     <script>
+        // Floating Nav Active State Logic
+        const navButtons = document.querySelectorAll('.nav-btn');
+
+        const scrollObserver = new IntersectionObserver((entries) => {
+            let activeId = null;
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    activeId = entry.target.getAttribute('id');
+                }
+            });
+
+            if (activeId && activeId !== 'about') {
+                navButtons.forEach(btn => {
+                    if (btn.getAttribute('href') === '#' + activeId) {
+                        // Jangan hapus active state 'about' jika sedang terbuka
+                        navButtons.forEach(b => {
+                            if (b.id !== 'aboutBtn') {
+                                b.classList.remove('active');
+                            }
+                        });
+                        btn.classList.add('active');
+                    }
+                });
+            }
+        }, { threshold: 0.4, rootMargin: "0px 0px -40% 0px" });
+
+        document.querySelectorAll('main section[id]').forEach(sec => scrollObserver.observe(sec));
+
         // Animasi Bintang
         const container = document.getElementById('space-container');
         for (let i = 0; i < 150; i++) {
@@ -324,18 +491,26 @@
             container.appendChild(star);
         }
 
-        // Klik Sosial Media & Animasi Scroll
+        // Observer untuk animasi muncul secara global
+        const fadeObserver = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    obs.unobserve(entry.target); // Berhenti mendeteksi setelah muncul agar ringan
+                }
+            });
+        }, { threshold: 0.3 }); // Memicu animasi ketika 30% elemen terlihat
+
+        // Terapkan observer ke bagian Data Diri
+        const personalInfo = document.querySelector('.personal-info');
+        if (personalInfo) fadeObserver.observe(personalInfo);
+
+        // Klik Sosial Media & Terapkan animasi Scroll
         document.querySelectorAll('.social-card').forEach(card => {
             card.addEventListener('click', () => {
                 window.open(card.dataset.url, '_blank');
             });
-            // Observer untuk animasi muncul
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) entry.target.classList.add('visible');
-                });
-            });
-            observer.observe(card);
+            fadeObserver.observe(card);
         });
 
         // Tombol Say Hi
@@ -343,12 +518,23 @@
 
         // Logika Panel About (Buka & Tutup)
         const aboutPanel = document.getElementById("about");
-        document.getElementById("aboutBtn").addEventListener("click", function () {
-            aboutPanel.classList.add("active");
+        const aboutBtn = document.getElementById("aboutBtn");
+
+        aboutBtn.addEventListener("click", function () {
+            if (aboutPanel.classList.contains("active")) {
+                aboutPanel.classList.remove("active");
+                aboutBtn.classList.remove("active");
+            } else {
+                aboutPanel.classList.add("active");
+                aboutBtn.classList.add("active");
+            }
         });
+
         document.getElementById("closeAboutBtn").addEventListener("click", function () {
             aboutPanel.classList.remove("active");
+            aboutBtn.classList.remove("active");
         });
     </script>
 </body>
+
 </html>
