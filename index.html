@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description"
+        content="Portofolio Akmal Maula Aditya - Tech Engineer yang berfokus mengimplementasikan autonomous dalam proses bisnis." />
+    <title>Akmal's Portfolio</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #050505;
+            --card-bg: rgba(20, 20, 22, 0.6);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --text-main: #f0f0f0;
+            --text-muted: #a0a0a5;
+            --accent-1: #bb86fc;
+            --accent-2: #03dac6;
+            --accent-3: #cf6679;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            padding-bottom: 100px;
+            position: relative;
+        }
+
+        /* Animated Background Orbs (Optimized for desktop, disabled on mobile) */
+        .bg-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(140px);
+            z-index: -1;
+            opacity: 0.4;
+            pointer-events: none;
+            will-change: transform;
+            animation: floatOrb 20s infinite alternate ease-in-out;
+        }
+
+        .orb-1 {
+            width: 40vw; height: 40vw;
+            background: radial-gradient(circle, rgba(187,134,252,0.5) 0%, rgba(5,5,5,0) 70%);
+            top: -10%; left: -10%;
+        }
+
+        .orb-2 {
+            width: 35vw; height: 35vw;
+            background: radial-gradient(circle, rgba(3,218,198,0.3) 0%, rgba(5,5,5,0) 70%);
+            bottom: -5%; right: -10%;
+            animation-delay: -5s;
+        }
+
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(5vw, 5vh) scale(1.05); }
+            100% { transform: translate(-5vw, 10vh) scale(0.95); }
+        }
+
+        @media (max-width: 768px) {
+            .bg-orb {
+                display: none; /* Fokus performa pada mobile dengan menghapus orb blur */
+            }
+            body {
+                background: linear-gradient(180deg, #050505 0%, #111115 100%);
+            }
+        }
+
+        /* Floating Nav - Dark Glassmorphism */
+        .floating-nav {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            background: rgba(15, 15, 18, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 8px;
+            border-radius: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            border: 1px solid var(--card-border);
+            gap: 5px;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: none;
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-muted);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            font-family: inherit;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-btn:hover {
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-btn.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--accent-2);
+            font-weight: 600;
+            border: 1px solid rgba(3, 218, 198, 0.3);
+            box-shadow: 0 0 15px rgba(3, 218, 198, 0.1);
+        }
+
+        @media (max-width: 600px) {
+            .floating-nav {
+                bottom: 20px;
+                padding: 6px;
+                width: 90%;
+                justify-content: space-between;
+            }
+            .nav-btn {
+                padding: 10px 15px;
+                font-size: 14px;
+                flex: 1;
+            }
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 6rem auto 0;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 6vw, 64px);
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 0%, var(--text-muted) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: clamp(16px, 2vw, 20px);
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto 2rem auto;
+            line-height: 1.6;
+        }
+
+        /* Profile Pic Modern AI Style */
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid rgba(187, 134, 252, 0.5);
+            padding: 5px;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            box-shadow: 0 0 30px rgba(187, 134, 252, 0.3);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.08) rotate(3deg);
+        }
+
+        /* Glassmorphism Generic Card Styling */
+        .glass-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* Hover animation like chatbot suggestion cards */
+        .hover-lift::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background: linear-gradient(180deg, var(--accent-1), var(--accent-2));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            background: rgba(30, 30, 35, 0.8);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.6);
+        }
+
+        .hover-lift:hover::before {
+            opacity: 1;
+        }
+
+        /* Info Grid */
+        .personal-info {
+            padding: 2.5rem;
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .personal-info.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Prioritaskan hover animation setelah elemen terlihat */
+        .personal-info.visible:hover {
+            transform: translateY(-8px);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .info-item h4 {
+            color: var(--accent-1);
+            font-size: 15px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .info-item p {
+            margin: 0;
+            color: var(--text-main);
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+
+        /* Sections Flex Layout */
+        .extra-section {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .vertical-card {
+            flex: 1 1 350px;
+            padding: 2.5rem;
+            min-height: 385px;
+        }
+
+        .vertical-card h3 {
+            color: var(--accent-1);
+            font-size: 1.4rem;
+            font-weight: 600;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .project-item {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 18px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            transition: background 0.3s ease;
+        }
+        
+        .project-item:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(255,255,255,0.1);
+        }
+
+        .project-item h4 {
+            color: var(--text-main);
+            font-size: 1.1rem;
+            margin: 0 0 8px 0;
+            font-weight: 500;
+        }
+
+        .project-item p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .project-item a {
+            color: var(--accent-2);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .project-item a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .exp-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .exp-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: var(--text-main);
+        }
+        
+        .exp-list li::before {
+            content: '•';
+            color: var(--accent-1);
+            position: absolute;
+            left: 0;
+            font-size: 20px;
+            line-height: 1;
+            top: 2px;
+        }
+        
+        .exp-list strong {
+            color: var(--accent-2);
+            font-weight: 500;
+        }
+
+        /* Social Cards */
+        .social-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+            padding-bottom: 4rem;
+        }
+
+        .social-card {
+            flex: 1 1 250px;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .social-card h3 {
+            color: var(--text-main);
+            font-size: 1.25rem;
+            margin: 15px 0 10px 0;
+            font-weight: 600;
+        }
+
+        .social-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .social-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s, transform 0.6s, background 0.3s, box-shadow 0.3s;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, rgba(187, 134, 252, 0.15) 0%, rgba(3, 218, 198, 0.15) 100%);
+            color: var(--text-main);
+            border: 1px solid rgba(187, 134, 252, 0.4);
+            border-radius: 50px;
+            padding: 14px 36px;
+            font-size: 16px;
+            font-weight: 500;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: all 0.5s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            background: rgba(187, 134, 252, 0.2);
+            border-color: var(--accent-1);
+            box-shadow: 0 10px 25px -10px rgba(187, 134, 252, 0.5);
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        /* About Panel */
+        .about-panel {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            max-width: 420px;
+            height: 100vh;
+            background: rgba(8, 8, 10, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-left: 1px solid var(--card-border);
+            color: var(--text-main);
+            padding: 80px 40px 40px;
+            transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            z-index: 1001;
+            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.7);
+        }
+
+        .about-panel.active {
+            right: 0;
+        }
+        
+        .about-panel h2 {
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 25px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--card-border);
+            border-radius: 50%;
+            width: 40px; height: 40px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .close-btn:hover {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            transform: rotate(90deg);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--card-border);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 600px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .personal-info {
+                padding: 1.5rem;
+            }
+            .vertical-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background Elements (Replaces stars logic, disabled on mobile in CSS) -->
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+
+    <!-- Navigation: Floating Nav -->
+    <div class="floating-nav">
+        <a href="#home" class="nav-btn active">Home</a>
+        <a href="#social" class="nav-btn">Social</a>
+        <a href="#contact" class="nav-btn">Contact</a>
+        <button id="aboutBtn" class="nav-btn">About</button>
+    </div>
+
+    <!-- About Side Panel -->
+    <section id="about" class="about-panel">
+        <button class="close-btn" id="closeAboutBtn">&times;</button>
+        <h2>About Akmal</h2>
+        <p style="line-height: 1.8; color: var(--text-muted); font-size: 1.05rem;">
+            Halo! Saya Akmal, seseorang yang antusias dalam menjembatani teknologi dan efisiensi bisnis. Fokus utama
+            saya adalah membangun sistem otonom yang dapat mengotomatisasi proses manual agar lebih cerdas dan
+            produktif. Dari robotika hingga integrasi AI, saya percaya bahwa teknologi terbaik adalah teknologi yang
+            memberikan solusi nyata bagi manusia.
+        </p>
+    </section>
+
+    <main>
+        <section class="hero" id="home">
+            <img src="Adit3.webp" alt="Akmal Maula Aditya" class="profile-pic" fetchpriority="high" loading="eager">
+            <h1>Halo, Aku Akmal!</h1>
+            <p>Seorang Adaptable Tech Engineer yang berfokus mengimplementasikan autonomous dalam proses bisnis.</p>
+            <button class="btn-primary" id="sayHiBtn">Say Hi!</button>
+        </section>
+
+        <!-- Glassmorphism Card 1 -->
+        <section class="personal-info glass-card hover-lift" id="social">
+            <h2 style="text-align: center; font-weight: 700; font-size: 28px; margin-bottom: 5px;">Data Diri</h2>
+            <div style="width: 50px; height: 3px; background: var(--accent-1); margin: 0 auto;"></div>
+            <div class="info-grid">
+                <div class="info-item">
+                    <h4>Pendidikan</h4>
+                    <p>Mahasiswa STMIK PPKIA Tarakanita Rahmawati</p>
+                </div>
+                <div class="info-item">
+                    <h4>Lokasi</h4>
+                    <p>Tarakan, Indonesia</p>
+                </div>
+                <div class="info-item">
+                    <h4>Minat Utama</h4>
+                    <p>Robotika, web application, dan lainnya</p>
+                </div>
+                <div class="info-item">
+                    <h4>Fokus Saat Ini</h4>
+                    <p>Mempelajari Database Management dan penggunaan AI.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="extra-section">
+            <div class="vertical-card glass-card hover-lift">
+                <h3>🚀 Proyek Saya</h3>
+                <div>
+                    <div class="project-item">
+                        <h4>Sheet Auto Fill</h4>
+                        <p>Menggunakan sheet otomatis untuk membantu transaksi di sebuah toko.</p>
+                    </div>
+                    <div class="project-item">
+                        <h4>Chatbot with Integrations</h4>
+                        <p>Mampu membuat chatbot yang terhubung dengan tools automation.
+                            <a href="https://script.google.com/macros/s/AKfycbwjk8C-jUTbB6HbDIoChj3kK9BGrDICR5nUGXOl8jVRheSyBpVYq8823dTmS2fXy19O/exec" target="_blank">Lihat di sini.</a>
+                        </p>
+                    </div>
+                    <div class="project-item">
+                        <h4>Robot Autonomous</h4>
+                        <p>Sedang mengembangkan robot autonomous untuk memberikan makan otomatis di peternakan ayam petelur.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vertical-card glass-card hover-lift">
+                <h3>🏆 Work Experience</h3>
+                <ul class="exp-list">
+                    <li><strong>2023 - 2025:</strong> Kasir & Pelayanan Pelanggan</li>
+                    <li><strong>2025 - Sekarang:</strong> Staf Gudang Distributor & Dukungan Teknis IT</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="social-links" id="contact">
+            <div class="social-card glass-card hover-lift" data-url="https://www.instagram.com/mal1shade">
+                <div style="font-size: 3rem;">📸</div>
+                <h3>Instagram</h3>
+                <p>@mal1shade</p>
+            </div>
+            <div class="social-card glass-card hover-lift" data-url="https://github.com/mal1shade">
+                <div style="font-size: 3rem;">💻</div>
+                <h3>GitHub</h3>
+                <p>Lihat proyek saya</p>
+            </div>
+            <div class="social-card glass-card hover-lift" data-url="https://mal1shade.github.io/Gallery/">
+                <div style="font-size: 3rem;">🖼️</div>
+                <h3>Gallery</h3>
+                <p>Foto & dokumentasi</p>
+            </div>
+        </section>
+
+        <section id="footer-contact" style="text-align:center; margin-top:2rem; margin-bottom: 2rem;">
+            <p style="color: var(--text-muted); font-size: 1.1rem;">Hubungi saya di: <br/>
+                <a href="mailto:akmal.maula@outlook.co.id"
+                   style="color: var(--accent-2); text-decoration: none; font-weight: 500; font-size: 1.2rem; display: inline-block; margin-top: 10px; transition: color 0.3s;">
+                   akmal.maula@outlook.co.id
+                </a>
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2026 Akmal Maula Aditya. Code smart. Build clean.
+    </footer>
+
+    <script>
+        // Floating Nav Active State Logic
+        const navButtons = document.querySelectorAll('.nav-btn');
+
+        const scrollObserver = new IntersectionObserver((entries) => {
+            let activeId = null;
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    activeId = entry.target.getAttribute('id');
+                }
+            });
+
+            if (activeId && activeId !== 'about') {
+                navButtons.forEach(btn => {
+                    if (btn.getAttribute('href') === '#' + activeId) {
+                        navButtons.forEach(b => {
+                            if (b.id !== 'aboutBtn') {
+                                b.classList.remove('active');
+                            }
+                        });
+                        btn.classList.add('active');
+                    }
+                });
+            }
+        }, { threshold: 0.4, rootMargin: "0px 0px -40% 0px" });
+
+        document.querySelectorAll('main section[id]').forEach(sec => scrollObserver.observe(sec));
+
+        // Observer untuk animasi muncul secara global (fade-in)
+        const fadeObserver = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    obs.unobserve(entry.target); 
+                }
+            });
+        }, { threshold: 0.2 }); 
+
+        // Terapkan observer ke personal Info dan Social Cards
+        const personalInfo = document.querySelector('.personal-info');
+        if (personalInfo) fadeObserver.observe(personalInfo);
+        
+        document.querySelectorAll('.social-card').forEach(card => {
+            card.addEventListener('click', () => {
+                window.open(card.dataset.url, '_blank');
+            });
+            fadeObserver.observe(card);
+        });
+
+        // Tombol Say Hi
+        document.getElementById('sayHiBtn').onclick = () => alert('Terima kasih sudah berkunjung!');
+
+        // Logika Panel About (Buka & Tutup)
+        const aboutPanel = document.getElementById("about");
+        const aboutBtn = document.getElementById("aboutBtn");
+
+        aboutBtn.addEventListener("click", function () {
+            if (aboutPanel.classList.contains("active")) {
+                aboutPanel.classList.remove("active");
+                aboutBtn.classList.remove("active");
+            } else {
+                aboutPanel.classList.add("active");
+                aboutBtn.classList.add("active");
+            }
+        });
+
+        document.getElementById("closeAboutBtn").addEventListener("click", function () {
+            aboutPanel.classList.remove("active");
+            aboutBtn.classList.remove("active");
+        });
+    </script>
+</body>
+
+</html>
