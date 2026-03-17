@@ -5,7 +5,7 @@ Selamat datang di repositori portofolio pribadi saya! Repositori ini berisi kode
 ![GitHub Pages](https://img.shields.io/badge/Hosted_on-GitHub_Pages-blue?style=for-the-badge&logo=github)
 
 ➡️ **[Lihat Live Website Di Sini](https://mal1shade.github.io/AkmalMaulaAditya/)**  
-*(Ganti URL di atas dengan link GitHub Pages Anda yang sebenarnya jika berbeda)*
+
 
 ---
 
@@ -41,7 +41,7 @@ Beberapa file utama dalam repositori ini:
 
 - `index.html`: Beranda utama portofolio (Data diri, pengalaman, kontak, sosial media).
 - `chatbot.html`: Representasi fitur AI *Chatbot* interaktif.
-- `dokumentasi.html`: *(Jika ada)* Halaman galeri aktivitas dan integrasi video.
+- `dokumentasi.html`: Halaman galeri aktivitas dan integrasi video.
 - Gambar/Aset: Foto profil dan elemen grafis pendukung.
 
 ---
