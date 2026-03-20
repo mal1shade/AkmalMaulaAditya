@@ -97,6 +97,7 @@
             z-index: 1000;
             border: 1px solid var(--card-border);
             gap: 5px;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
         }
 
         .nav-btn {
@@ -135,6 +136,14 @@
                 padding: 6px;
                 width: 90%;
                 justify-content: space-between;
+                transform: translateX(-50%) translateY(100px);
+                opacity: 0;
+                pointer-events: none;
+            }
+            .floating-nav.visible {
+                transform: translateX(-50%) translateY(0);
+                opacity: 1;
+                pointer-events: auto;
             }
             .nav-btn {
                 padding: 10px 15px;
@@ -703,6 +712,16 @@
         document.getElementById("closeAboutBtn").addEventListener("click", function () {
             aboutPanel.classList.remove("active");
             aboutBtn.classList.remove("active");
+        });
+
+        // Floating Nav scroll visibility (Mobile only via CSS)
+        window.addEventListener("scroll", () => {
+            const floatingNav = document.querySelector(".floating-nav");
+            if (window.scrollY > 50) {
+                floatingNav.classList.add("visible");
+            } else {
+                floatingNav.classList.remove("visible");
+            }
         });
     </script>
 </body>
