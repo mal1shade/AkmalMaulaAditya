@@ -7,9 +7,10 @@
     <meta name="description"
         content="Portofolio Akmal Maula Aditya - Tech Engineer yang berfokus mengimplementasikan autonomous dalam proses bisnis." />
     <title>Akmal's Portfolio</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <style>
         :root {
             --bg-dark: #050505;
@@ -54,28 +55,42 @@
         }
 
         .orb-1 {
-            width: 40vw; height: 40vw;
-            background: radial-gradient(circle, rgba(187,134,252,0.5) 0%, rgba(5,5,5,0) 70%);
-            top: -10%; left: -10%;
+            width: 40vw;
+            height: 40vw;
+            background: radial-gradient(circle, rgba(187, 134, 252, 0.5) 0%, rgba(5, 5, 5, 0) 70%);
+            top: -10%;
+            left: -10%;
         }
 
         .orb-2 {
-            width: 35vw; height: 35vw;
-            background: radial-gradient(circle, rgba(3,218,198,0.3) 0%, rgba(5,5,5,0) 70%);
-            bottom: -5%; right: -10%;
+            width: 35vw;
+            height: 35vw;
+            background: radial-gradient(circle, rgba(3, 218, 198, 0.3) 0%, rgba(5, 5, 5, 0) 70%);
+            bottom: -5%;
+            right: -10%;
             animation-delay: -5s;
         }
 
         @keyframes floatOrb {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(5vw, 5vh) scale(1.05); }
-            100% { transform: translate(-5vw, 10vh) scale(0.95); }
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(5vw, 5vh) scale(1.05);
+            }
+
+            100% {
+                transform: translate(-5vw, 10vh) scale(0.95);
+            }
         }
 
         @media (max-width: 768px) {
             .bg-orb {
-                display: none; /* Fokus performa pada mobile dengan menghapus orb blur */
+                display: none;
+                /* Fokus performa pada mobile dengan menghapus orb blur */
             }
+
             body {
                 background: linear-gradient(180deg, #050505 0%, #111115 100%);
             }
@@ -140,11 +155,13 @@
                 opacity: 0;
                 pointer-events: none;
             }
+
             .floating-nav.visible {
                 transform: translateX(-50%) translateY(0);
                 opacity: 1;
                 pointer-events: auto;
             }
+
             .nav-btn {
                 padding: 10px 15px;
                 font-size: 14px;
@@ -154,7 +171,7 @@
 
         main {
             max-width: 1000px;
-            margin: 10rem auto 0;
+            margin: 6rem auto 0;
             padding: 0 2rem;
             position: relative;
             z-index: 1;
@@ -217,7 +234,10 @@
         .hover-lift::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; width: 4px; height: 100%;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
             background: linear-gradient(180deg, var(--accent-1), var(--accent-2));
             opacity: 0;
             transition: opacity 0.3s ease;
@@ -247,7 +267,7 @@
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         /* Prioritaskan hover animation setelah elemen terlihat */
         .personal-info.visible:hover {
             transform: translateY(-8px);
@@ -304,17 +324,17 @@
         }
 
         .project-item {
-            background: rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.05);
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             padding: 18px;
             border-radius: 12px;
             margin-bottom: 15px;
             transition: background 0.3s ease;
         }
-        
+
         .project-item:hover {
-            background: rgba(255,255,255,0.05);
-            border-color: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
         }
 
         .project-item h4 {
@@ -337,7 +357,7 @@
             font-weight: 500;
             transition: color 0.2s;
         }
-        
+
         .project-item a:hover {
             color: #ffffff;
             text-decoration: underline;
@@ -347,7 +367,7 @@
             list-style: none;
             padding: 0;
         }
-        
+
         .exp-list li {
             position: relative;
             padding-left: 20px;
@@ -355,7 +375,7 @@
             line-height: 1.6;
             color: var(--text-main);
         }
-        
+
         .exp-list li::before {
             content: '•';
             color: var(--accent-1);
@@ -365,7 +385,7 @@
             line-height: 1;
             top: 2px;
         }
-        
+
         .exp-list strong {
             color: var(--accent-2);
             font-weight: 500;
@@ -425,12 +445,15 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .btn-primary::before {
             content: '';
             position: absolute;
-            top: 0; left: -100%; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
             transition: all 0.5s ease;
         }
 
@@ -440,7 +463,7 @@
             border-color: var(--accent-1);
             box-shadow: 0 10px 25px -10px rgba(187, 134, 252, 0.5);
         }
-        
+
         .btn-primary:hover::before {
             left: 100%;
         }
@@ -467,7 +490,7 @@
         .about-panel.active {
             right: 0;
         }
-        
+
         .about-panel h2 {
             font-size: 2rem;
             background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
@@ -480,19 +503,22 @@
             position: absolute;
             top: 25px;
             right: 35px;
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--card-border);
             border-radius: 50%;
-            width: 40px; height: 40px;
-            display: flex; align-items: center; justify-content: center;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: var(--text-muted);
             font-size: 1.5rem;
             cursor: pointer;
             transition: all 0.2s ease;
         }
-        
+
         .close-btn:hover {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             color: #fff;
             transform: rotate(90deg);
         }
@@ -511,12 +537,15 @@
             .info-grid {
                 grid-template-columns: 1fr;
             }
+
             .hero h1 {
                 font-size: 2.2rem;
             }
+
             .personal-info {
                 padding: 1.5rem;
             }
+
             .vertical-card {
                 padding: 1.5rem;
             }
@@ -552,7 +581,7 @@
     <main>
         <section class="hero" id="home">
             <img src="Adit3.webp" alt="Akmal Maula Aditya" class="profile-pic" fetchpriority="high" loading="eager">
-            <h1>Halo, Aku Akmal!</h1>
+            <h1>Halo, Saya Akmal !</h1>
             <p>Seorang Adaptable Tech Engineer yang berfokus mengimplementasikan autonomous dalam proses bisnis.</p>
             <button class="btn-primary" id="sayHiBtn">Say Hi!</button>
         </section>
@@ -592,12 +621,14 @@
                     <div class="project-item">
                         <h4>Chatbot with Integrations</h4>
                         <p>Mampu membuat chatbot yang terhubung dengan tools automation.
-                            <a href="https://script.google.com/macros/s/AKfycbwjk8C-jUTbB6HbDIoChj3kK9BGrDICR5nUGXOl8jVRheSyBpVYq8823dTmS2fXy19O/exec" target="_blank">Lihat di sini.</a>
+                            <a href="https://script.google.com/macros/s/AKfycbwjk8C-jUTbB6HbDIoChj3kK9BGrDICR5nUGXOl8jVRheSyBpVYq8823dTmS2fXy19O/exec"
+                                target="_blank">Lihat di sini.</a>
                         </p>
                     </div>
                     <div class="project-item">
                         <h4>Robot Autonomous</h4>
-                        <p>Sedang mengembangkan robot autonomous untuk memberikan makan otomatis di peternakan ayam petelur.</p>
+                        <p>Sedang mengembangkan robot autonomous untuk memberikan makan otomatis di peternakan ayam
+                            petelur.</p>
                     </div>
                 </div>
             </div>
@@ -630,10 +661,10 @@
         </section>
 
         <section id="footer-contact" style="text-align:center; margin-top:2rem; margin-bottom: 2rem;">
-            <p style="color: var(--text-muted); font-size: 1.1rem;">Hubungi saya di: <br/>
+            <p style="color: var(--text-muted); font-size: 1.1rem;">Hubungi saya di: <br />
                 <a href="mailto:akmal.maula@outlook.co.id"
-                   style="color: var(--accent-2); text-decoration: none; font-weight: 500; font-size: 1.2rem; display: inline-block; margin-top: 10px; transition: color 0.3s;">
-                   akmal.maula@outlook.co.id
+                    style="color: var(--accent-2); text-decoration: none; font-weight: 500; font-size: 1.2rem; display: inline-block; margin-top: 10px; transition: color 0.3s;">
+                    akmal.maula@outlook.co.id
                 </a>
             </p>
         </section>
@@ -676,15 +707,15 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    obs.unobserve(entry.target); 
+                    obs.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.2 }); 
+        }, { threshold: 0.2 });
 
         // Terapkan observer ke personal Info dan Social Cards
         const personalInfo = document.querySelector('.personal-info');
         if (personalInfo) fadeObserver.observe(personalInfo);
-        
+
         document.querySelectorAll('.social-card').forEach(card => {
             card.addEventListener('click', () => {
                 window.open(card.dataset.url, '_blank');
