@@ -349,72 +349,93 @@
             gap: 10px;
         }
 
-        .project-item {
+        .project-item,
+        .experience-item {
             background: rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.05);
             padding: 18px;
             border-radius: 12px;
             margin-bottom: 15px;
-            transition: background 0.3s ease;
+            transition: background 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
         }
 
-        .project-item:hover {
+        .project-item:last-child,
+        .experience-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-item:hover,
+        .experience-item:hover {
             background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.12);
+            transform: translateY(-2px);
         }
 
-        .project-item h4 {
+        .project-item h4,
+        .experience-item h4 {
             color: var(--text-main);
             font-size: 1.1rem;
             margin: 0 0 8px 0;
             font-weight: 500;
         }
 
-        .project-item p {
+        .project-item p,
+        .experience-item p {
             color: var(--text-muted);
             font-size: 0.9rem;
             margin: 0;
             line-height: 1.5;
         }
 
-        .project-item a {
+        .project-item a,
+        .experience-item a {
             color: var(--accent-2);
             text-decoration: none;
             font-weight: 500;
             transition: color 0.2s;
         }
 
-        .project-item a:hover {
+        .project-item a:hover,
+        .experience-item a:hover {
             color: #ffffff;
             text-decoration: underline;
         }
 
-        .exp-list {
-            list-style: none;
-            padding: 0;
+        /* Experience Header & Badges */
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
         }
 
-        .exp-list li {
-            position: relative;
-            padding-left: 20px;
-            margin-bottom: 20px;
-            line-height: 1.6;
-            color: var(--text-main);
+        .exp-header h4 {
+            margin: 0;
+            flex: 1;
+            min-width: 180px;
         }
 
-        .exp-list li::before {
-            content: '•';
+        .exp-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 3px 10px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            border-radius: 20px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            background: rgba(187, 134, 252, 0.12);
             color: var(--accent-1);
-            position: absolute;
-            left: 0;
-            font-size: 20px;
-            line-height: 1;
-            top: 2px;
+            border: 1px solid rgba(187, 134, 252, 0.3);
         }
 
-        .exp-list strong {
+        .exp-badge.current {
+            background: rgba(3, 218, 198, 0.12);
             color: var(--accent-2);
-            font-weight: 500;
+            border: 1px solid rgba(3, 218, 198, 0.35);
+            box-shadow: 0 0 10px rgba(3, 218, 198, 0.15);
         }
 
         /* Social Cards */
@@ -644,29 +665,43 @@
                 <div>
                     <div class="project-item">
                         <h4>Sheet Auto Fill</h4>
-                        <p>Menggunakan sheet otomatis untuk membantu transaksi di sebuah toko.</p>
+                        <p>Menggunakan Google SpreadSheet otomatis untuk membantu transaksi di sebuah toko.</p>
                     </div>
                     <div class="project-item">
-                        <h4>Chatbot with Integrations</h4>
-                        <p>Mampu membuat chatbot yang terhubung dengan tools automation.
+                        <h4>Chatbot dengan Integrasi</h4>
+                        <p>Mampu membuat chatbot yang terhubung dengan tools automation. (Menggunakan Zapier dan Google
+                            Apps Script)
                             <a href="https://script.google.com/macros/s/AKfycbwjk8C-jUTbB6HbDIoChj3kK9BGrDICR5nUGXOl8jVRheSyBpVYq8823dTmS2fXy19O/exec"
                                 target="_blank">Lihat di sini.</a>
                         </p>
                     </div>
                     <div class="project-item">
-                        <h4>Robot Autonomous</h4>
-                        <p>Sedang mengembangkan robot autonomous untuk memberikan makan otomatis di peternakan ayam
-                            petelur.</p>
+                        <h4>Web Application "FEB Connect"</h4>
+                        <p>Sedang membuat web app untuk menghubungkan mahasiswa feb di Universitas Mulawarman.</p>
                     </div>
                 </div>
             </div>
 
             <div class="vertical-card glass-card hover-lift">
                 <h3>🏆 Work Experience</h3>
-                <ul class="exp-list">
-                    <li><strong>2023 - 2025:</strong> Kasir & Pelayanan Pelanggan</li>
-                    <li><strong>2025 - Sekarang:</strong> Staf Gudang Distributor & Dukungan Teknis IT</li>
-                </ul>
+                <div>
+                    <div class="experience-item">
+                        <div class="exp-header">
+                            <h4>Operasional PT. Sinar Utama Khatulistiwa</h4>
+                            <span class="exp-badge current">2025 - Sekarang</span>
+                        </div>
+                        <p>Melakukan kegiatan operasional yang mencakup penataan dan pemeliharaan inventaris gudang dan
+                            retail serta mendukung kelancaran sistem distribusi logistik. (Part Time)</p>
+                    </div>
+                    <div class="experience-item">
+                        <div class="exp-header">
+                            <h4>Kasir & Pelayanan Pelanggan</h4>
+                            <span class="exp-badge">2023 - 2025</span>
+                        </div>
+                        <p>Melayani proses transaksi kasir, pembukuan keuangan harian, serta memberikan pelayanan
+                            konsumen dengan ramah dan komunikatif.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
